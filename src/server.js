@@ -15,8 +15,7 @@ const app  = express();
 const port = process.env.PORT || 3000;  // si no esta definido en el archivo .env uso el 3000.
 
 // ... junto con los app.use existentes:
-app.use("/api/materias",        MateriasController);
-app.use("/api/calificaciones",  CalificacionesController)
+
 // Agrego los Middlewares
 app.use(cors());         // Middleware de CORS
 app.use(express.json()); // Middleware para parsear y comprender JSON
@@ -24,6 +23,8 @@ app.use(express.json()); // Middleware para parsear y comprender JSON
 // Endpoints (todos los Routers)
 app.use("/api/alumnos", AlumnosController);
 app.use("/api/cursos" , CursosController);
+app.use("/api/materias",        MateriasController);
+app.use("/api/calificaciones",  CalificacionesController)
 
 //
 // Inicio el Server y lo pongo a escuchar.

@@ -21,15 +21,21 @@ export default class MateriasService {
         return await this.repository.createAsync(materia);
     }
 
-    updateAsync = async (id, materia) => {
+    updateAsync = async (materia) => {
 
-        const existing = await this.repository.getByIdAsync(id);
+    const existing =
+        await this.repository.getByIdAsync(materia.id);
 
-        if (!existing) {
-            throw new Error(`No se encontró la materia (id: ${id}).`);
-        }
+    if (!existing) {
+        throw new Error(
+            `No se encontró la materia (id: ${materia.id}).`
+        );
+    }
 
-        return await this.repository.updateAsync(id, materia);
+    return await this.repository.updateAsync(
+        materia.id,
+        materia
+    );
     }
 
     deleteByIdAsync = async (id) => {
